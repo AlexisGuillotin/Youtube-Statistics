@@ -9,6 +9,9 @@ def get_video_duration(video_url):
     except Exception as e:
         print(f"Error fetching duration for {video_url}: {e}")
         return 0
+    
+def calculate_nb_videos(json_data):
+    return len(json_data)
 
 def calculate_total_watch_time(json_data):
     total_watch_time_seconds = 0
@@ -41,7 +44,11 @@ def main():
         total_watch_time = calculate_total_watch_time(data)
 
         print(f'Total Watch Time: {total_watch_time:.2f} hours')
-
+        
+        # Calculate number of videos watched
+        nb_videos = calculate_nb_videos(data)
+        print(f"Nombre de vidéos regardées: {nb_videos}")
+        
     except FileNotFoundError:
         print(f'Error: File not found at {file_path}')
     except Exception as e:
